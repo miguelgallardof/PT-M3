@@ -177,7 +177,7 @@ function problemD() {
   ); */
 
   // promise version
-  Promise.all(filenames.map(promisifiedReadFile))
+  /* Promise.all(filenames.map(promisifiedReadFile))
     .then((responses) => {
       responses.forEach((response) => blue(response));
     })
@@ -185,6 +185,23 @@ function problemD() {
       magenta(new Error(err));
     })
     .finally(() => {
+      console.log("-- D. promise version done --");
+    }); */
+
+  // con reduce
+  filenames
+    .reduce((promise, file) => {
+      return promise.then((stanza) => {
+        if (stanza) blue(stanza);
+        return promisifiedReadFile(file);
+      });
+    }, Promise.resolve(false))
+    .then((stanza) => {
+      blue(stanza);
+      console.log("-- D. promise version done --");
+    })
+    .catch((err) => {
+      magenta(new Error(err));
       console.log("-- D. promise version done --");
     });
 }
@@ -199,5 +216,11 @@ function problemE() {
   var fs = require("fs");
   function promisifiedWriteFile(filename, str) {
     // tu código aquí
+    return new Promise((resolve, reject) => {
+      fs.writeFile(filename, str, "utf-8", (err) => {
+        if (err) reject(err);
+        else resolve(filename);
+      });
+    });
   }
 }
