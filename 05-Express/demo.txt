@@ -1,0 +1,49 @@
+
+const promiseA = new $Promise(función)
+
+{
+    state = 'pending';
+    value = undefined
+    _handlerGroups = [{false, errrCB}, {successCB, false}, {false, err => console.log(err)}, {sC EC, B}]
+}
+
+executor(fn resolve, fn reject)
+
+promiseA.then(res => una lógica, err => console.log(err))
+.then(successCB, errrCB)
+
+const promiseB = .then(successCB, 2)
+
+.then(null, función)
+.catch(err => console.log(err))
+
+
+fetch('http: api pelis/1')
+.then(res => {
+    dispatch({
+        type: 'ADD_MOVIE', 
+        payload: res
+    })
+})
+
+
+
+
+promiseA.resolve('hola')
+{
+    status: fullfilled,
+    valor: 'hola'
+}
+
+
+encadenados
+promise.then(cb, cb)
+.then(cb, cb)
+.then(cb, cb)
+
+
+anidados
+promise.then(funcion() {
+    ... lógica
+    p.then()
+}))

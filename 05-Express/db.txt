@@ -1,0 +1,6 @@
+
+
+ID | name | apellido
+1    Juan   Perez
+2    Pedro  Perez
+3    Juan   Bosque
