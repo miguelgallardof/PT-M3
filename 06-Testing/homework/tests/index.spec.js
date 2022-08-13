@@ -44,7 +44,10 @@ describe("Test de APIS", () => {
 
   describe("POST /sumArray", () => {
     it("responds with 200", () =>
-      agent.post("/sumArray").send({ array: [], num: 8 }).expect(200));
+      agent
+        .post("/sumArray")
+        .send({ array: [2, 5], num: 1 })
+        .expect(200));
     it("responds with and object with message `test`", () =>
       agent
         .post("/sumArray")
@@ -67,6 +70,7 @@ describe("Test de APIS", () => {
           expect(res.body.result).toEqual(false);
         }));
   });
+  0;
 
   describe("POST /numString", () => {
     it("responds with 200", () =>
@@ -116,4 +120,29 @@ describe("Test de APIS", () => {
         })
         .expect(400));
   });
+
+  /* describe("POST /pluck", () => {
+    const array = [
+      { alumno: "Juan", edad: 30, carrera: "fullstack" },
+      { alumno: "Nico", edad: 20, carrera: "data" },
+      { alumno: "Leo", edad: 50, carrera: "fullstack" },
+    ];
+    it("responds with 400 if...", () => {
+      agent.post("/pluck").send({ array: 101, prop: "edad" }).expect(400);
+    });
+    it("responds with 400 if...", () => {
+      agent.post("/pluck").send({ array: array, prop: "" }).expect(400);
+    });
+    it("responds with 200 if...", () => {
+      agent.post("/pluck").send({ array: array, prop: "edad" }).expect(200);
+    });
+    it("responds with 200 if...", () => {
+      return agent
+        .post("/pluck")
+        .send({ array: array, prop: "edad" })
+        .then((res) => {
+          expect(res.body.result).toEqual([30, 20, 50]);
+        });
+    });
+  }); */
 });

@@ -51,7 +51,6 @@ app.post("/numString", (req, res) => {
   const { str } = req.body;
   if (typeof str !== "string") return res.sendStatus(400);
   if (!str.length) return res.sendStatus(400);
-
   res.json({
     result: str.length,
   });
@@ -67,5 +66,15 @@ app.post("/pluck", (req, res) => {
   }, []);
   res.json({ result });
 });
+
+/* app.post("/pluck", (req, res) => {
+  const { array, prop } = req.body;
+  if (!Array.isArray(array) || prop === "") return res.sendStatus(400);
+  return res.send({ result: pluck(array, prop) });
+});
+
+function pluck(array, prop) {
+  return array.map((e) => e[prop]);
+} */
 
 module.exports = app; // Exportamos app para que supertest session la pueda ejecutar
